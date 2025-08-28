@@ -1,9 +1,11 @@
+"use client";
+
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export function AboutSection() {
   return (
     <section className="min-h-screen flex items-center justify-center px-8">
-      <div className="w-1/4 mx-auto">
+      <div className="w-sm mx-auto">
         <div className="bg-card border border-border rounded-xl backdrop-blur-sm relative overflow-hidden shadow-2xl">
           {/* Terminal header for dev aesthetic */}
           <div className="h-8 bg-muted/50 border-b border-border flex items-center px-4 gap-2">

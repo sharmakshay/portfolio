@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, Database, Terminal } from "lucide-react";
+import { Code2, Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,7 +13,7 @@ export function ProjectsSection() {
         "A modern e-commerce solution built with Next.js and Stripe integration",
       tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
       command: "npm run build:production",
-      icon: <Database className="w-5 h-5" />,
+      icon: <Code2 className="w-5 h-5" />,
     },
     {
       title: "Task Management App",
@@ -21,7 +21,7 @@ export function ProjectsSection() {
         "Collaborative task management with real-time updates and team features",
       tags: ["React", "Node.js", "Socket.io", "MongoDB"],
       command: "docker-compose up -d",
-      icon: <Terminal className="w-5 h-5" />,
+      icon: <Code2 className="w-5 h-5" />,
     },
     {
       title: "Weather Dashboard",

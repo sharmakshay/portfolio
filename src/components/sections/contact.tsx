@@ -23,7 +23,7 @@ export function ContactSection() {
           and discuss how we can create something amazing together.
         </p>
 
-        <div className="bg-background/60 backdrop-blur-sm border border-primary/20 rounded-lg p-6 mb-8 font-mono text-sm text-left max-w-2xl mx-auto">
+        <div className="bg-background/60 backdrop-blur-sm border border-primary/20 rounded-lg p-6 mb-8 font-mono text-sm text-left max-w-2xl">
           <div className="flex items-center gap-2 mb-4 text-muted-foreground">
             <GitBranch className="w-4 h-4 text-primary" />
             <span>Initializing collaboration...</span>
@@ -48,16 +48,9 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 max-w-2xl justify-end">
           <Button size="lg" className="text-lg px-8 py-3 font-mono">
             ./send_message.sh
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="text-lg px-8 py-3 bg-transparent font-mono border-primary/20 hover:border-primary/40"
-          >
-            cat resume.pdf
           </Button>
         </div>
       </div>

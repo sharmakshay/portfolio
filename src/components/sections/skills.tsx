@@ -75,13 +75,13 @@ export function SkillsSection() {
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
                       {category.icon}
-                      <h3 className="text-xl font-semibold">
+                      {/* <h3 className="text-xl font-semibold">
                         {category.category}
-                      </h3>
+                      </h3> */}
+                      <div className="font-mono text-sm text-muted-foreground bg-muted/50 px-2 py-1 rounded">
+                        ./{category.command}
+                      </div>
                     </div>
-                  </div>
-                  <div className="font-mono text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded">
-                    ./{category.command}
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-3">
