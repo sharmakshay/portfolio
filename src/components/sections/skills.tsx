@@ -1,55 +1,42 @@
 "use client";
 
-import { Code2, Cpu, Hammer, Palette, Terminal } from "lucide-react";
+import { Cpu, Languages, Terminal } from "lucide-react";
 
 export function SkillsSection() {
   const skillCategories = [
     {
-      category: "Frontend",
+      category: "Languages",
       skills: [
-        { name: "React", years: 5 },
-        { name: "Next.js", years: 3 },
-        { name: "TypeScript", years: 4 },
-        { name: "Tailwind CSS", years: 3 },
-        { name: "Vue.js", years: 2 },
+        { name: "Python", years: 7 },
+        { name: "JavaScript", years: 7 },
+        { name: "TypeScript", years: 5 },
+        { name: "Java", years: 3 },
+        { name: "R", years: 3 },
+        { name: "Go", years: 2 },
+        { name: "C#", years: 1 },
+        { name: "SQL", years: 9 },
       ],
-      icon: <Code2 className="w-4 h-4" />,
-      command: "frontend/",
+      icon: <Languages className="w-4 h-4" />,
+      command: "languages/",
     },
     {
-      category: "Backend",
+      category: "Technologies",
       skills: [
+        { name: "React.js", years: 5 },
         { name: "Node.js", years: 4 },
-        { name: "Python", years: 3 },
-        { name: "PostgreSQL", years: 3 },
-        { name: "MongoDB", years: 2 },
-        { name: "GraphQL", years: 2 },
+        { name: "Next.js", years: 3 },
+        { name: "Django", years: 2 },
+        { name: "FastAPI", years: 2 },
+        { name: "PostgreSQL", years: 5 },
+        { name: "Docker", years: 3 },
+        { name: "Git", years: 5 },
+        { name: "Linux", years: 3 },
+        { name: "AWS", years: 2 },
+        { name: "GCP", years: 2 },
+        { name: "Pulumi", years: 1 },
       ],
       icon: <Cpu className="w-4 h-4" />,
-      command: "backend/",
-    },
-    {
-      category: "Tools & DevOps",
-      skills: [
-        { name: "Docker", years: 2 },
-        { name: "AWS", years: 3 },
-        { name: "Git", years: 6 },
-        { name: "Webpack", years: 3 },
-        { name: "Jest", years: 3 },
-      ],
-      icon: <Hammer className="w-4 h-4" />,
-      command: "devops/",
-    },
-    {
-      category: "Design",
-      skills: [
-        { name: "Figma", years: 2 },
-        { name: "UI/UX", years: 4 },
-        { name: "Responsive Design", years: 5 },
-        { name: "Accessibility", years: 3 },
-      ],
-      icon: <Palette className="w-4 h-4" />,
-      command: "design/",
+      command: "technologies/",
     },
   ];
 
@@ -57,9 +44,7 @@ export function SkillsSection() {
     <section className="pb-20 px-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-balance mb-4">
-            Skills & Expertise
-          </h2>
+          <h2 className="text-4xl font-bold text-balance mb-4">Skills</h2>
           <div className="inline-flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-primary/20 rounded-lg px-4 py-2 font-mono text-sm">
             <Terminal className="w-4 h-4 text-primary" />
             <span className="text-muted-foreground">~/skills</span>
@@ -75,9 +60,6 @@ export function SkillsSection() {
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
                       {category.icon}
-                      {/* <h3 className="text-xl font-semibold">
-                        {category.category}
-                      </h3> */}
                       <div className="font-mono text-sm text-muted-foreground bg-muted/50 px-2 py-1 rounded">
                         ./{category.command}
                       </div>

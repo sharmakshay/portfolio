@@ -32,8 +32,8 @@ export const EXPERIENCE_DATA = [
     company: "Macy's",
     position: "Software Engineer",
     period: "2016 - 2018",
-    startDate: "2016-06",
-    endDate: "2018-05",
+    startDate: "2016-06-12",
+    endDate: "2018-05-08",
     description:
       "Worked on an application that simulates order flows and shows analytics.",
     achievements: [
@@ -47,8 +47,8 @@ export const EXPERIENCE_DATA = [
     company: "Invesco",
     position: "Senior Software Engineer",
     period: "2018 - 2021",
-    startDate: "2018-05",
-    endDate: "2021-06",
+    startDate: "2018-05-20",
+    endDate: "2021-06-10",
     description:
       "Built and lead all the engineering efforts for a greenfield quantitative investment platform",
     achievements: [
@@ -62,8 +62,8 @@ export const EXPERIENCE_DATA = [
     company: "Relay Payments",
     position: "Software Engineer",
     period: "2021 - 2022",
-    startDate: "2021-06",
-    endDate: "2022-08",
+    startDate: "2021-06-25",
+    endDate: "2022-08-05",
     description:
       "Worked on a full-stack, greenfield, web application responsible for managing reservations, payments, receipts, etc.",
     achievements: [
@@ -77,8 +77,8 @@ export const EXPERIENCE_DATA = [
     company: "Rails",
     position: "Founding Engineer",
     period: "2022 - 2024",
-    startDate: "2022-08",
-    endDate: "2024-01",
+    startDate: "2022-08-25",
+    endDate: "2024-01-02",
     description: "First hire, tasked with building out v1.0 of the product.",
     achievements: [
       "Shipped v1.0 of the product",
@@ -104,8 +104,8 @@ export const EXPERIENCE_DATA = [
     company: "Stealth Startup",
     position: "Founding Engineer",
     period: "2024 - 2024",
-    startDate: "2024-01",
-    endDate: "2024-03",
+    startDate: "2024-01-07",
+    endDate: "2024-03-02",
     description: "Built greenfield portfolio monitoring app for web3",
     achievements: [
       "Scaffolded webapp with React, SWR, etc.",
@@ -118,7 +118,7 @@ export const EXPERIENCE_DATA = [
     company: "Wagmo",
     position: "Senior Software Engineer",
     period: "2024 - 2025",
-    startDate: "2024-03",
+    startDate: "2024-04-31",
     endDate: "2025-08",
     description:
       "Worked on a full -stack application to manage users ’ insurance policy, claims, and reimbursements",

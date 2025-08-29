@@ -74,7 +74,7 @@ export function ProjectsSection() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-primary/10 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground w-full font-mono"
+                  className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-primary/10 backdrop-blur-sm w-full font-mono"
                 >
                   ./view_project.sh
                 </Button>

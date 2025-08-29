@@ -5,7 +5,7 @@ import { AboutSection } from "@/components/sections/about";
 import { ContactSection } from "@/components/sections/contact";
 import { ExperienceSection } from "@/components/sections/experience";
 import { IntroSection } from "@/components/sections/intro";
-import { ProjectsSection } from "@/components/sections/projects";
+// import { ProjectsSection } from "@/components/sections/projects";
 import { SkillsSection } from "@/components/sections/skills";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 
@@ -28,9 +28,9 @@ export default function Portfolio() {
         <AboutSection />
       </div>
 
-      <div id="projects">
+      {/* <div id="projects">
         <ProjectsSection />
-      </div>
+      </div> */}
 
       <div id="experience">
         <ExperienceSection />

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Terminal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ABOUT_DATA } from "@/lib/consts";
 
@@ -14,26 +14,31 @@ export function AboutSection() {
   }, []);
 
   const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("experience")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="min-h-screen flex items-center justify-center px-8">
       <div className="w-md mx-auto">
         <div className="bg-card border border-border rounded-xl backdrop-blur-sm relative overflow-hidden shadow-2xl">
-          {/* Terminal header for dev aesthetic */}
           <div className="h-8 bg-muted/50 border-b border-border flex items-center px-4 gap-2">
             <div className="w-2 h-2 rounded-full bg-destructive"></div>
             <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
             <span className="text-xs font-mono text-muted-foreground ml-2">
-              business_card.dev
+              portfolio
             </span>
           </div>
-
+          <div className="inline-flex items-center gap-2 backdrop-blur-sm rounded-lg px-4 py-2 font-mono text-xs">
+            <Terminal className="w-4 h-4 text-primary" />
+            <span className="text-muted-foreground">~/</span>
+            <span className="text-primary">$</span>
+            <span className="text-foreground">whoami --verbose</span>
+          </div>
           <div className="p-6">
             <div className="flex items-center gap-12">
-              {/* Profile Section */}
               <div className="flex-shrink-0 ml-4">
                 <div className="relative">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full border border-primary/20 flex items-center justify-center shadow-lg">
@@ -47,12 +52,8 @@ export function AboutSection() {
                 </div>
               </div>
 
-              {/* Contact & Info Section */}
               <div className="flex-1 space-y-3">
                 <div>
-                  <p className="text-xs text-muted-foreground font-mono">
-                    {ABOUT_DATA.cmd}
-                  </p>
                   <h1 className="text-2xl font-bold text-foreground">
                     {ABOUT_DATA.name}
                   </h1>
@@ -61,6 +62,9 @@ export function AboutSection() {
                   </p>
                   <p className="text-muted-foreground text-xs">
                     {ABOUT_DATA.education}
+                  </p>
+                  <p className="text-muted-foreground text-xs">
+                    {ABOUT_DATA.location}
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-1">

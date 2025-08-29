@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { EXPERIENCE_DATA } from "@/lib/consts";
+import { getShortDate } from "@/lib/utils";
 
 export function ExperienceSection() {
   const [activeExperience, setActiveExperience] = useState(
@@ -48,13 +49,8 @@ export function ExperienceSection() {
       const position =
         ((startDate.getTime() - minDate.getTime()) / totalRange) * 100;
 
-      const startMonth = startDate.toLocaleDateString("en-US", {
-        month: "short",
-      });
-      const startYear = startDate.getFullYear().toString().slice(-2);
-
       markers.push({
-        label: `${startMonth}'${startYear}`,
+        label: getShortDate(experience.startDate),
         position,
         isStart: true,
         experienceIndex: index,
@@ -78,7 +74,7 @@ export function ExperienceSection() {
           laterMarker.date.getTime() - currentMarker.date.getTime();
         const monthsDiff = timeDiff / (1000 * 60 * 60 * 24 * 30); // Convert to months
 
-        if (monthsDiff <= 3) {
+        if (monthsDiff <= 4) {
           shouldInclude = false; // Skip current marker, keep the later one
           break;
         } else {
@@ -292,7 +288,6 @@ export function ExperienceSection() {
                       </>
                     )}
 
-                    {/* ... existing card content ... */}
                     <CardContent className="p-6 relative z-10">
                       <div className="mb-4">
                         <div className="flex items-center justify-between mb-3">
@@ -332,10 +327,8 @@ export function ExperienceSection() {
                               : "text-primary/80"
                           }`}
                         >
-                          {calculateDuration(
-                            experience.startDate,
-                            experience.endDate,
-                          )}
+                          {getShortDate(experience.startDate)} -{" "}
+                          {getShortDate(experience.endDate)}
                         </p>
                       </div>
 
