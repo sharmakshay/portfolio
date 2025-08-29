@@ -1,38 +1,12 @@
 "use client";
 
-import { Code2, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PROJECT_DATA } from "@/lib/consts";
 
 export function ProjectsSection() {
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A modern e-commerce solution built with Next.js and Stripe integration",
-      tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-      command: "npm run build:production",
-      icon: <Code2 className="w-5 h-5" />,
-    },
-    {
-      title: "Task Management App",
-      description:
-        "Collaborative task management with real-time updates and team features",
-      tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-      command: "docker-compose up -d",
-      icon: <Code2 className="w-5 h-5" />,
-    },
-    {
-      title: "Weather Dashboard",
-      description:
-        "Beautiful weather app with location-based forecasts and interactive maps",
-      tags: ["Vue.js", "Weather API", "Chart.js", "CSS Grid"],
-      command: "yarn dev --port 3000",
-      icon: <Code2 className="w-5 h-5" />,
-    },
-  ];
-
   return (
     <section className="py-20 px-8 bg-muted/30">
       <div className="max-w-6xl mx-auto">
@@ -48,7 +22,7 @@ export function ProjectsSection() {
           </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {PROJECT_DATA.map((project, index) => (
             <Card
               key={project.title}
               className="group relative overflow-hidden border border-primary/20 bg-background/60 backdrop-blur-sm hover:bg-background/80 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
@@ -56,7 +30,7 @@ export function ProjectsSection() {
               <CardContent className="p-8 relative">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2 text-primary">
-                    {project.icon}
+                    <project.icon className="w-5 h-5" />
                     <span className="font-mono text-xs">
                       project_{index + 1}
                     </span>

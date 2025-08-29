@@ -4,118 +4,11 @@ import { Terminal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { EXPERIENCE_DATA } from "@/lib/consts";
 
 export function ExperienceSection() {
-  const experiences = [
-    {
-      company: "Macy's",
-      position: "Software Engineer",
-      period: "2016 - 2018",
-      startDate: "2016-06",
-      endDate: "2018-05",
-      description:
-        "Worked on an application that simulates order flows and shows analytics.",
-      achievements: [
-        "Published 2 papers",
-        "Built data analysis tools",
-        "Learned Python & R",
-      ],
-      skills: ["JavaScript", "Java", "Spring Boot", "Python", "SQL"],
-    },
-    {
-      company: "Invesco",
-      position: "Senior Software Engineer",
-      period: "2018 - 2021",
-      startDate: "2018-05",
-      endDate: "2021-06",
-      description:
-        "Built and lead all the engineering efforts for a greenfield quantitative investment platform, in close collaboration with quantitative researchers",
-      achievements: [
-        "10+ satisfied clients",
-        "Built e-commerce sites",
-        "Learned business skills",
-      ],
-      skills: ["R", "RShiny", "RMarkdown", "RStudio", "SQL", "Linux"],
-    },
-    {
-      company: "Relay Payments",
-      position: "Software Engineer",
-      period: "2021 - 2022",
-      startDate: "2021-06",
-      endDate: "2022-08",
-      description:
-        "Worked on a full -stack, greenfield, web application responsible for managing reservations, payments, receipts, etc",
-      achievements: [
-        "Built 8 client websites",
-        "Learned WordPress & PHP",
-        "Improved page speed by 25%",
-      ],
-      skills: ["React", "TypeScript", "Go", "PostgreSQL", "Docker"],
-    },
-    {
-      company: "Rails",
-      position: "Founding Engineer",
-      period: "2022 - 2024",
-      startDate: "2022-08",
-      endDate: "2024-01",
-      description: "First hire, tasked with building out v1.0 of the product.",
-      achievements: [
-        "Shipped first production app",
-        "Learned React & Node.js",
-        "Contributed to open source",
-      ],
-      skills: [
-        "React",
-        "TypeScript",
-        "Python",
-        "SQL",
-        "GCP",
-        "Firebase",
-        "Linux",
-        "Docker",
-      ],
-    },
-    {
-      company: "Stealth Startup",
-      position: "Founding Engineer",
-      period: "2024 - 2024",
-      startDate: "2024-01",
-      endDate: "2024-03",
-      description:
-        "Developed responsive web applications using React and modern JavaScript. Collaborated with design teams to create pixel-perfect user interfaces.",
-      achievements: [
-        "Built 15+ client projects",
-        "Improved accessibility scores",
-        "Reduced bundle size by 30%",
-      ],
-      skills: ["React", "Next.js", "TypeScript", "AWS", "Docker"],
-    },
-    {
-      company: "Wagmo",
-      position: "Senior Software Engineer",
-      period: "2024 - 2025",
-      startDate: "2024-03",
-      endDate: "2025-08",
-      description:
-        "Led development of scalable web applications serving 100K+ users. Architected microservices infrastructure and mentored junior developers.",
-      achievements: [
-        "Reduced load times by 40%",
-        "Led team of 5 developers",
-        "Implemented CI/CD pipeline",
-      ],
-      skills: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Python",
-        "Django",
-        "PostgreSQL",
-      ],
-    },
-  ];
-
   const [activeExperience, setActiveExperience] = useState(
-    experiences.length - 1,
+    EXPERIENCE_DATA.length - 1,
   ); // Start at latest experience
   const [lastHoveredExperience, setLastHoveredExperience] = useState<
     number | null
@@ -127,8 +20,8 @@ export function ExperienceSection() {
     lastHoveredExperience !== null ? lastHoveredExperience : activeExperience;
 
   const getDateRange = () => {
-    const startDates = experiences.map((exp) => new Date(exp.startDate));
-    const endDates = experiences.map((exp) =>
+    const startDates = EXPERIENCE_DATA.map((exp) => new Date(exp.startDate));
+    const endDates = EXPERIENCE_DATA.map((exp) =>
       exp.endDate === "present" ? new Date() : new Date(exp.endDate),
     );
 
@@ -139,6 +32,69 @@ export function ExperienceSection() {
   };
 
   const { minDate, maxDate } = getDateRange();
+
+  const getYearMarkers = () => {
+    const markers: {
+      label: string;
+      position: number;
+      isStart: boolean;
+      experienceIndex: number;
+      date: Date;
+    }[] = [];
+
+    EXPERIENCE_DATA.forEach((experience, index) => {
+      const startDate = new Date(experience.startDate);
+      const totalRange = maxDate.getTime() - minDate.getTime();
+      const position =
+        ((startDate.getTime() - minDate.getTime()) / totalRange) * 100;
+
+      const startMonth = startDate.toLocaleDateString("en-US", {
+        month: "short",
+      });
+      const startYear = startDate.getFullYear().toString().slice(-2);
+
+      markers.push({
+        label: `${startMonth}'${startYear}`,
+        position,
+        isStart: true,
+        experienceIndex: index,
+        date: startDate,
+      });
+    });
+
+    const filteredMarkers = [];
+    const sortedMarkers = markers.sort(
+      (a, b) => a.date.getTime() - b.date.getTime(),
+    );
+
+    for (let i = 0; i < sortedMarkers.length; i++) {
+      const currentMarker = sortedMarkers[i];
+      let shouldInclude = true;
+
+      // Check if there's a later marker within 3 months
+      for (let j = i + 1; j < sortedMarkers.length; j++) {
+        const laterMarker = sortedMarkers[j];
+        const timeDiff =
+          laterMarker.date.getTime() - currentMarker.date.getTime();
+        const monthsDiff = timeDiff / (1000 * 60 * 60 * 24 * 30); // Convert to months
+
+        if (monthsDiff <= 3) {
+          shouldInclude = false; // Skip current marker, keep the later one
+          break;
+        } else {
+          break; // No more overlapping markers
+        }
+      }
+
+      if (shouldInclude) {
+        filteredMarkers.push(currentMarker);
+      }
+    }
+
+    return filteredMarkers;
+  };
+
+  const yearMarkers = getYearMarkers();
 
   const getTimelinePosition = (startDate: string, endDate: string) => {
     const start = new Date(startDate);
@@ -200,18 +156,25 @@ export function ExperienceSection() {
         </div>
 
         <div className="relative">
-          <div className="relative h-10">
+          <div className="relative h-20 hidden lg:block">
             {/* Background timeline */}
             <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/30 rounded-full" />
 
             {/* Year markers */}
-            <div className="absolute top-2 left-0 right-0 flex justify-between text-xs font-mono text-muted-foreground">
-              <span>{minDate.getFullYear()}</span>
-              <span>{maxDate.getFullYear()}</span>
+            <div className="absolute top-2 left-0 right-0">
+              {yearMarkers.map((marker) => (
+                <div
+                  key={marker.label}
+                  className="absolute text-xs font-mono text-muted-foreground transform -translate-x-1/2"
+                  style={{ left: `${marker.position}%` }}
+                >
+                  {marker.label}
+                </div>
+              ))}
             </div>
 
             {/* Experience sections */}
-            {experiences.map((experience, index) => {
+            {EXPERIENCE_DATA.map((experience, index) => {
               const { startPosition, width } = getTimelinePosition(
                 experience.startDate,
                 experience.endDate,
@@ -264,6 +227,41 @@ export function ExperienceSection() {
             })}
           </div>
 
+          <div className="relative lg:hidden">
+            <div className="bg-background/80 backdrop-blur-sm border border-primary/20 rounded-lg p-4">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="font-mono text-sm text-primary">
+                    {EXPERIENCE_DATA[currentActiveExperience].company}
+                  </span>
+                </div>
+                <span className="text-xs font-mono text-muted-foreground">
+                  {currentActiveExperience + 1} / {EXPERIENCE_DATA.length}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                <span>
+                  {EXPERIENCE_DATA[currentActiveExperience].startDate}
+                </span>
+                <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-primary/60" />
+                <span className="bg-primary/20 text-primary px-2 py-1 rounded-full">
+                  {calculateDuration(
+                    EXPERIENCE_DATA[currentActiveExperience].startDate,
+                    EXPERIENCE_DATA[currentActiveExperience].endDate,
+                  )}
+                </span>
+                <div className="flex-1 h-px bg-gradient-to-r from-primary/60 to-primary/30" />
+                <span>
+                  {EXPERIENCE_DATA[currentActiveExperience].endDate ===
+                  "present"
+                    ? "now"
+                    : EXPERIENCE_DATA[currentActiveExperience].endDate}
+                </span>
+              </div>
+            </div>
+          </div>
+
           <div
             ref={scrollContainerRef}
             className="flex overflow-x-auto overflow-y-hidden pb-6 scroll-smooth experience-scrollbar items-center"
@@ -272,7 +270,7 @@ export function ExperienceSection() {
             }}
           >
             <div className="flex gap-6 w-max px-4">
-              {experiences.map((experience, index) => (
+              {EXPERIENCE_DATA.map((experience, index) => (
                 // biome-ignore lint/a11y/noStaticElementInteractions: TBD
                 <div
                   key={experience.company}
@@ -294,6 +292,7 @@ export function ExperienceSection() {
                       </>
                     )}
 
+                    {/* ... existing card content ... */}
                     <CardContent className="p-6 relative z-10">
                       <div className="mb-4">
                         <div className="flex items-center justify-between mb-3">

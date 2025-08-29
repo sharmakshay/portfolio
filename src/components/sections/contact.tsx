@@ -41,7 +41,7 @@ export function ContactSection() {
               <span className="text-green-400">✓</span>
               <span>Ready for new projects</span>
             </div>
-            <div className="flex items-center gap-2 text-primary">
+            <div className="flex items-center gap-2 text-primary animate-pulse">
               <span>→</span>
               <span>Awaiting connection...</span>
             </div>
@@ -49,9 +49,11 @@ export function ContactSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 max-w-2xl justify-end">
-          <Button size="lg" className="text-lg px-8 py-3 font-mono">
-            ./send_message.sh
-          </Button>
+          <a href="mailto:mail@sharmakshay.com">
+            <Button size="lg" className="text-md px-8 py-3 font-mono">
+              ./send_message.sh
+            </Button>
+          </a>
         </div>
       </div>
     </section>
