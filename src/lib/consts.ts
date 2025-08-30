@@ -118,8 +118,8 @@ export const EXPERIENCE_DATA = [
     company: "Wagmo",
     position: "Senior Software Engineer",
     period: "2024 - 2025",
-    startDate: "2024-04-31",
-    endDate: "2025-08",
+    startDate: "2024-04-07",
+    endDate: "2025-07-02",
     description:
       "Worked on a full -stack application to manage users ’ insurance policy, claims, and reimbursements",
     achievements: [
