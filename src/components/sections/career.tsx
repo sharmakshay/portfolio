@@ -4,12 +4,12 @@ import { Terminal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { EXPERIENCE_DATA } from "@/lib/consts";
+import { CAREER_DATA } from "@/lib/consts";
 import { getShortDate } from "@/lib/utils";
 
 export function CareerSection() {
   const [activeExperience, setActiveExperience] = useState(
-    EXPERIENCE_DATA.length - 1,
+    CAREER_DATA.length - 1,
   ); // Start at latest experience
   const [lastHoveredExperience, setLastHoveredExperience] = useState<
     number | null
@@ -21,8 +21,8 @@ export function CareerSection() {
     lastHoveredExperience !== null ? lastHoveredExperience : activeExperience;
 
   const getDateRange = () => {
-    const startDates = EXPERIENCE_DATA.map((exp) => new Date(exp.startDate));
-    const endDates = EXPERIENCE_DATA.map((exp) =>
+    const startDates = CAREER_DATA.map((exp) => new Date(exp.startDate));
+    const endDates = CAREER_DATA.map((exp) =>
       exp.endDate === "present" ? new Date() : new Date(exp.endDate),
     );
 
@@ -40,7 +40,7 @@ export function CareerSection() {
     const MIN_SPACING_MONTHS = 4;
 
     // Create and sort markers by date
-    const allMarkers = EXPERIENCE_DATA.map((experience, index) => {
+    const allMarkers = CAREER_DATA.map((experience, index) => {
       const startDate = new Date(experience.startDate);
       const position =
         ((startDate.getTime() - minDate.getTime()) / totalRange) * 100;
@@ -156,7 +156,7 @@ export function CareerSection() {
             </div>
 
             {/* Experience sections */}
-            {EXPERIENCE_DATA.map((experience, index) => {
+            {CAREER_DATA.map((experience, index) => {
               const { startPosition, width } = getTimelinePosition(
                 experience.startDate,
                 experience.endDate,
@@ -215,30 +215,27 @@ export function CareerSection() {
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <span className="font-mono text-sm text-primary">
-                    {EXPERIENCE_DATA[currentActiveExperience].company}
+                    {CAREER_DATA[currentActiveExperience].company}
                   </span>
                 </div>
                 <span className="text-xs font-mono text-muted-foreground">
-                  {currentActiveExperience + 1} / {EXPERIENCE_DATA.length}
+                  {currentActiveExperience + 1} / {CAREER_DATA.length}
                 </span>
               </div>
               <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-                <span>
-                  {EXPERIENCE_DATA[currentActiveExperience].startDate}
-                </span>
+                <span>{CAREER_DATA[currentActiveExperience].startDate}</span>
                 <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-primary/60" />
                 <span className="bg-primary/20 text-primary px-2 py-1 rounded-full">
                   {calculateDuration(
-                    EXPERIENCE_DATA[currentActiveExperience].startDate,
-                    EXPERIENCE_DATA[currentActiveExperience].endDate,
+                    CAREER_DATA[currentActiveExperience].startDate,
+                    CAREER_DATA[currentActiveExperience].endDate,
                   )}
                 </span>
                 <div className="flex-1 h-px bg-gradient-to-r from-primary/60 to-primary/30" />
                 <span>
-                  {EXPERIENCE_DATA[currentActiveExperience].endDate ===
-                  "present"
+                  {CAREER_DATA[currentActiveExperience].endDate === "present"
                     ? "now"
-                    : EXPERIENCE_DATA[currentActiveExperience].endDate}
+                    : CAREER_DATA[currentActiveExperience].endDate}
                 </span>
               </div>
             </div>
@@ -246,13 +243,13 @@ export function CareerSection() {
 
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto overflow-y-hidden pb-6 scroll-smooth experience-scrollbar items-center"
+            className="flex overflow-x-auto overflow-y-hidden pb-6 scroll-smooth career-scrollbar items-center"
             style={{
               minHeight: "700px",
             }}
           >
             <div className="flex gap-6 w-max px-4">
-              {EXPERIENCE_DATA.map((experience, index) => (
+              {CAREER_DATA.map((experience, index) => (
                 // biome-ignore lint/a11y/noStaticElementInteractions: TBD
                 <div
                   key={experience.company}

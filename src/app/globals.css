@@ -128,49 +128,49 @@
 }
 
 @layer components {
-  .experience-scrollbar {
+  .career-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: oklch(0.4 0.15 200 / 0.6) oklch(0.88 0 0);
   }
 
-  .experience-scrollbar::-webkit-scrollbar {
+  .career-scrollbar::-webkit-scrollbar {
     height: 8px;
   }
 
-  .experience-scrollbar::-webkit-scrollbar-track {
+  .career-scrollbar::-webkit-scrollbar-track {
     background: oklch(0.92 0 0);
     border-radius: 4px;
     border: 1px solid oklch(0.88 0 0);
   }
 
-  .experience-scrollbar::-webkit-scrollbar-thumb {
+  .career-scrollbar::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg, oklch(0.4 0.15 200), oklch(0.25 0.1 160));
     border-radius: 4px;
     border: 1px solid oklch(0.4 0.15 200 / 0.3);
     transition: all 0.3s ease;
   }
 
-  .experience-scrollbar::-webkit-scrollbar-thumb:hover {
+  .career-scrollbar::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(90deg, oklch(0.35 0.18 200), oklch(0.2 0.12 160));
     box-shadow: 0 0 8px oklch(0.4 0.15 200 / 0.4);
   }
 
   /* Dark mode scrollbar styles */
-  .dark .experience-scrollbar {
+  .dark .career-scrollbar {
     scrollbar-color: oklch(0.6 0.2 200 / 0.8) oklch(0.18 0 0);
   }
 
-  .dark .experience-scrollbar::-webkit-scrollbar-track {
+  .dark .career-scrollbar::-webkit-scrollbar-track {
     background: oklch(0.18 0 0);
     border: 1px solid oklch(0.22 0 0);
   }
 
-  .dark .experience-scrollbar::-webkit-scrollbar-thumb {
+  .dark .career-scrollbar::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg, oklch(0.6 0.2 200), oklch(0.5 0.15 160));
     border: 1px solid oklch(0.6 0.2 200 / 0.4);
   }
 
-  .dark .experience-scrollbar::-webkit-scrollbar-thumb:hover {
+  .dark .career-scrollbar::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(90deg, oklch(0.65 0.22 200), oklch(0.55 0.17 160));
     box-shadow: 0 0 12px oklch(0.6 0.2 200 / 0.6);
   }

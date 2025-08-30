@@ -27,7 +27,7 @@ export const ABOUT_DATA = {
   ],
 };
 
-export const EXPERIENCE_DATA = [
+export const CAREER_DATA = [
   {
     company: "Macy's",
     position: "Software Engineer",
