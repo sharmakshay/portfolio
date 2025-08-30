@@ -19,9 +19,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Software Engineer",
-  description: "A modern portfolio showcasing software engineering expertise",
-  generator: "v0.app",
+  title: "Akshay's portfolio",
+  description: "Learn more about me",
 };
 
 export default function RootLayout({
