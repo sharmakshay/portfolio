@@ -15,7 +15,7 @@ export const IntroSection = ({ handleIntroComplete }: IntroSectionProps) => {
           text={INTRO_TEXT}
           speed={150}
           onComplete={handleIntroComplete}
-          className="text-6xl md:text-8xl font-mono font-bold text-foreground"
+          className="text-xl sm:text-8xl font-mono font-bold text-foreground"
         />
       </div>
     </div>

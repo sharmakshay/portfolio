@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { EXPERIENCE_DATA } from "@/lib/consts";
 import { getShortDate } from "@/lib/utils";
 
-export function ExperienceSection() {
+export function CareerSection() {
   const [activeExperience, setActiveExperience] = useState(
     EXPERIENCE_DATA.length - 1,
   ); // Start at latest experience
@@ -35,54 +35,40 @@ export function ExperienceSection() {
   const { minDate, maxDate } = getDateRange();
 
   const getYearMarkers = () => {
-    const markers: {
-      label: string;
-      position: number;
-      isStart: boolean;
-      experienceIndex: number;
-      date: Date;
-    }[] = [];
+    const totalRange = maxDate.getTime() - minDate.getTime();
+    const MONTHS_IN_MS = 1000 * 60 * 60 * 24 * 30;
+    const MIN_SPACING_MONTHS = 4;
 
-    EXPERIENCE_DATA.forEach((experience, index) => {
+    // Create and sort markers by date
+    const allMarkers = EXPERIENCE_DATA.map((experience, index) => {
       const startDate = new Date(experience.startDate);
-      const totalRange = maxDate.getTime() - minDate.getTime();
       const position =
         ((startDate.getTime() - minDate.getTime()) / totalRange) * 100;
 
-      markers.push({
+      return {
         label: getShortDate(experience.startDate),
         position,
         isStart: true,
         experienceIndex: index,
         date: startDate,
-      });
-    });
+      };
+    }).sort((a, b) => a.date.getTime() - b.date.getTime());
 
+    // Filter out markers that are too close together (keep the later one)
     const filteredMarkers = [];
-    const sortedMarkers = markers.sort(
-      (a, b) => a.date.getTime() - b.date.getTime(),
-    );
 
-    for (let i = 0; i < sortedMarkers.length; i++) {
-      const currentMarker = sortedMarkers[i];
-      let shouldInclude = true;
+    for (let i = 0; i < allMarkers.length; i++) {
+      const currentMarker = allMarkers[i];
+      const hasLaterMarkerWithinSpacing = allMarkers
+        .slice(i + 1)
+        .some((laterMarker) => {
+          const timeDiff =
+            laterMarker.date.getTime() - currentMarker.date.getTime();
+          const monthsDiff = timeDiff / MONTHS_IN_MS;
+          return monthsDiff <= MIN_SPACING_MONTHS;
+        });
 
-      // Check if there's a later marker within 3 months
-      for (let j = i + 1; j < sortedMarkers.length; j++) {
-        const laterMarker = sortedMarkers[j];
-        const timeDiff =
-          laterMarker.date.getTime() - currentMarker.date.getTime();
-        const monthsDiff = timeDiff / (1000 * 60 * 60 * 24 * 30); // Convert to months
-
-        if (monthsDiff <= 4) {
-          shouldInclude = false; // Skip current marker, keep the later one
-          break;
-        } else {
-          break; // No more overlapping markers
-        }
-      }
-
-      if (shouldInclude) {
+      if (!hasLaterMarkerWithinSpacing) {
         filteredMarkers.push(currentMarker);
       }
     }
@@ -142,12 +128,12 @@ export function ExperienceSection() {
     <section className="py-20 px-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-balance mb-4">Experience</h2>
+          <h2 className="text-4xl font-bold text-balance mb-4">Career</h2>
           <div className="inline-flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-primary/20 rounded-lg px-4 py-2 font-mono text-sm">
             <Terminal className="w-4 h-4 text-primary" />
             <span className="text-muted-foreground">~/career</span>
             <span className="text-primary">$</span>
-            <span className="text-foreground">git log --oneline --reverse</span>
+            <span className="text-foreground">git log --reverse</span>
           </div>
         </div>
 

@@ -5,8 +5,8 @@ export const INTRO_TEXT = "hello world";
 export const ABOUT_DATA = {
   cmd: "$ whoami --verbose",
   name: "Akshay Sharma",
-  position: "Senior Engineer. Full Stack. Generalist.",
-  education: "MS in Computer Science @ Georgia Tech",
+  position: "Senior Software Engineer",
+  education: "M.S. Computer Science @ GT",
   location: "Atlanta, GA",
   socialLinks: [
     {

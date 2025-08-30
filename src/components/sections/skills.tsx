@@ -42,7 +42,7 @@ export function SkillsSection() {
 
   return (
     <section className="pb-20 px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl font-bold text-balance mb-4">Skills</h2>
           <div className="inline-flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-primary/20 rounded-lg px-4 py-2 font-mono text-sm">

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { AboutSection } from "@/components/sections/about";
+import { CareerSection } from "@/components/sections/career";
 import { ContactSection } from "@/components/sections/contact";
-import { ExperienceSection } from "@/components/sections/experience";
 import { IntroSection } from "@/components/sections/intro";
 // import { ProjectsSection } from "@/components/sections/projects";
 import { SkillsSection } from "@/components/sections/skills";
@@ -32,8 +32,8 @@ export default function Portfolio() {
         <ProjectsSection />
       </div> */}
 
-      <div id="experience">
-        <ExperienceSection />
+      <div id="career">
+        <CareerSection />
       </div>
 
       <div id="skills">

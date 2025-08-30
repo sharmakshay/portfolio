@@ -13,10 +13,8 @@ export function AboutSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToProjects = () => {
-    document
-      .getElementById("experience")
-      ?.scrollIntoView({ behavior: "smooth" });
+  const scrollToCareer = () => {
+    document.getElementById("career")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -38,10 +36,10 @@ export function AboutSection() {
             <span className="text-foreground">whoami --verbose</span>
           </div>
           <div className="p-6">
-            <div className="flex items-center gap-12">
-              <div className="flex-shrink-0 ml-4">
+            <div className="flex items-center gap-6 sm:gap-12">
+              <div className="flex-shrink-0 sm:ml-4">
                 <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full border border-primary/20 flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full border border-primary/20 flex items-center justify-center shadow-lg">
                     <span className="text-xl font-mono font-bold text-primary">
                       AS
                     </span>
@@ -52,12 +50,12 @@ export function AboutSection() {
                 </div>
               </div>
 
-              <div className="flex-1 space-y-3">
+              <div className="flex-1 space-y-3 float-right">
                 <div>
-                  <h1 className="text-2xl font-bold text-foreground">
+                  <h1 className="text-xl md:text-2xl text-foreground font-bold">
                     {ABOUT_DATA.name}
                   </h1>
-                  <p className="text-primary font-medium">
+                  <p className="text-sm md:text-lg text-primary font-medium">
                     {ABOUT_DATA.position}
                   </p>
                   <p className="text-muted-foreground text-xs">
@@ -89,11 +87,11 @@ export function AboutSection() {
 
       <button
         type="button"
-        onClick={scrollToProjects}
+        onClick={scrollToCareer}
         className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 p-3 bg-primary/10 hover:bg-primary/20 rounded-full border border-primary/20 transition-all duration-300 hover:scale-110 ${
           scrollY > 100 ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
-        aria-label="Scroll to projects"
+        aria-label="Scroll to career"
       >
         <ChevronDown className="mt-1 w-5 h-5 text-primary animate-bounce" />
       </button>
