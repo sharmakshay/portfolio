@@ -5,7 +5,7 @@ export const INTRO_TEXT = "hello world";
 export const ABOUT_DATA = {
   cmd: "$ whoami --verbose",
   name: "Akshay Sharma",
-  position: "Senior Engineer",
+  position: "Senior Engineer. Full Stack. Generalist.",
   education: "MS in Computer Science @ Georgia Tech",
   location: "Atlanta, GA",
   socialLinks: [
@@ -140,11 +140,10 @@ export const EXPERIENCE_DATA = [
 
 export const PROJECT_DATA = [
   {
-    title: "E-Commerce Platform",
-    description:
-      "A modern e-commerce solution built with Next.js and Stripe integration",
-    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-    command: "npm run build:production",
+    title: "Sizzl",
+    description: "Marketplace for homechefs to sell food to their community",
+    tags: ["Ionic React", "TypeScript", "Firebase"],
+    command: "ionic build",
     icon: Code2,
   },
   {
