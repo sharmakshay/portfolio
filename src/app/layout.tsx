@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import type React from "react";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -36,6 +37,7 @@ export default function RootLayout({
       >
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
